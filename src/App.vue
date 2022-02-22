@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <my-header></my-header>
+	  <entry-record></entry-record>
   </div>
 </template>
 
 <script>
-import MyHeader from "./components/shared/MyHeader.vue"
+import EntryRecord from "./components/entryRecord/EntryRecord.vue"
 export default {
     components:{
-        MyHeader
+		EntryRecord
     }
 }
 </script>
 
 <style>
+    #app{
+        display: flex;
+    }
 </style>
