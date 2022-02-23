@@ -1,10 +1,9 @@
 export default class Vehicles{
-    constructor(vehicle = '', entryDate = '', entryHour = '', exitDate = '', exitHour = '', diary = false){
+    constructor(vehicle = '', licensePlate = '', entryDate = '', entryHour = '', dailyRate = ''){
         this.vehicle = vehicle 
+        this.licensePlate = licensePlate
         this.entryDate = entryDate
         this.entryHour = entryHour
-        this.exitDate = exitDate
-        this.exitHour = exitHour
-        this.diary = diary
+        this.dailyRate = dailyRate
     }
 }
