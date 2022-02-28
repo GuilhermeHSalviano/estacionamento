@@ -1,18 +1,32 @@
 <template>
     <div class="content">
         <my-header></my-header>
-        <vehicle-record></vehicle-record>
+        <vehicle-record @typeOfVehicle='setVehicle'></vehicle-record>
+        <license-plate @emitLicensePlateNumber='setVehicle'></license-plate>
     </div>
 </template>
 <script>
 import MyHeader from "../shared/MyHeader.vue"
 import Vehicles from '../../../Vehicles.js'
 import VehicleRecord from './VehicleRecord.vue'
+import LicensePlate from "./LicensePlate.vue"
 export default {
    components:{
        MyHeader,
-       VehicleRecord
-   }
+       VehicleRecord,
+       LicensePlate
+   },
+   data(){
+       return{
+           vehicle: Boolean,
+           lisencePlate: ''
+       }
+   },
+   methods:{
+       setVehicle(value, property){
+           this[property] = value
+       }
+   }   
 }
 </script>
 <style scoped>
