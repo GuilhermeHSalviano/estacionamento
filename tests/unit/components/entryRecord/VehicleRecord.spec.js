@@ -3,8 +3,8 @@ import { mount } from "@vue/test-utils"
 
 it('It tests whether emit is working or not', ()=>{
     const wrapper = mount(VehicleRecord)
-    wrapper.vm.$options.watch.input.call()
-    console.log(wrapper.emitted)
+    wrapper.vm.$emit('input', false)
+    console.log(wrapper.emitted('input'))
    
 
 })
