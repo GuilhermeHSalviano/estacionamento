@@ -1,7 +1,7 @@
 <template>
     <div>
         <label for="">Placa:</label>
-        <input type="text" v-model="licensePlate">
+        <input type="text" v-model="licensePlate" class="number">
     </div>
 </template>
 <script>
