@@ -1,19 +1,19 @@
 <template>
     <div>
-        <label for="">O veículo é uma moto?</label>
-        <input type="checkbox" name="car" v-model="input" class="input">
+        <label for="">O veículo é um carro?</label>
+        <input type="checkbox" name="car" v-model="input" checked @click="changeTypeOfVehicle(input)" data-input>
     </div>
 </template>
 <script>
 export default {
    data() {
        return{
-           input: Boolean
+           input: true
        }
    },
-   watch:{
-       input(value){
-           this.$emit('typeOfVehicle', value, 'vehicle')
+   methods:{
+        changeTypeOfVehicle(value){
+           this.$emit('emitTypeOfVehicle', value, 'vehicle')
         }
    }
 }
