@@ -1,9 +1,12 @@
-export default class Vehicle{
-    constructor(vehicle = '', licensePlate = '', entryDate = '', entryHour = '', dailyRate = ''){
-        this.vehicle = vehicle 
+export class Vehicle{
+    constructor(car = '', licensePlate = '', entryDate = '', entryHour = '', dailyRate = ''){
+        this.car = car 
         this.licensePlate = licensePlate
         this.entryDate = entryDate
         this.entryHour = entryHour
         this.dailyRate = dailyRate
-    }
+        }
 }
+
+
+

@@ -14,7 +14,13 @@ export default {
     watch:{
         licensePlate(value){
             this.$emit('emitLicensePlateNumber', value, 'licensePlate')
+        },
+        clear(value){
+           this.licensePlate = ''
         }
+    },
+    props:{
+        clear: Boolean
     }
 }
 </script>

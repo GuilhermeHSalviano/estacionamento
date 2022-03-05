@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-	  <entry-record></entry-record>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import EntryRecord from "./components/entryRecord/EntryRecord.vue"
+import { routes } from "../routes.js"
 export default {
-    components:{
-		EntryRecord
+  data(){
+    return{
+      routes
     }
+  }
 }
 </script>
 

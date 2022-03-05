@@ -12,7 +12,7 @@ export default {
     data(){
         return{
             date: '',
-            time: ''
+            time: '',
         }
     },
     watch:{
@@ -20,7 +20,13 @@ export default {
             if(this.date && time != ''){
                 this.$emit('emitTime', time, this.date)
             }
+        },
+        clear(value){
+            this.date = this.time = ''
         }
+    },
+    props:{
+        clear: Boolean
     }
 }
 </script>

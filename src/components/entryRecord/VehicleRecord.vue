@@ -13,7 +13,7 @@ export default {
    },
    methods:{
         changeTypeOfVehicle(value){
-           this.$emit('emitTypeOfVehicle', value, 'vehicle')
+           this.$emit('emitTypeOfVehicle', value, 'car')
         }
    }
 }

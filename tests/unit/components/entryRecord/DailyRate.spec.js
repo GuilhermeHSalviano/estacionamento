@@ -7,4 +7,5 @@ test('It tests whether the stay is daily rate or not', () => {
     input.setChecked()
     input.trigger('click')
     console.log(wrapper.emitted('emitDailyRateInput'))
+    expect(wrapper.emitted('emitDailyRateInput')).toEqual([[true, 'dailyRate']])
 })
