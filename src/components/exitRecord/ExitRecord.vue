@@ -11,6 +11,7 @@
 import MyHeader from "../shared/MyHeader.vue"
 import ListOfRecords from './ListOfRecords.vue'
 import SetExit from "./SetExit.vue"
+import { getVehicle } from "../../../functions.js"
 
 export default {
     components:{
@@ -33,8 +34,12 @@ export default {
         setSelectedPlate(value){
             this.selectedPlate = value
         },
-        setExitData(){
-            
+        setExitData(date, time){
+          const vehicle = getVehicle(this.listOfVehicles, this.selectedPlate)  
+          vehicle[0].exitDate = date
+          vehicle[0].exitHour = time
+          this.listOfVehicles[vehicle[1]] = vehicle[0]
+          localStorage.setItem('saveRecord', JSON.stringify(this.listOfVehicles))
         }
     }
 }
