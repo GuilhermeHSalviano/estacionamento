@@ -1,4 +1,4 @@
-import { getVehicle } from "../../../functions.js"
+import { getDate, getVehicle } from "../../../functions.js"
 
 describe('It tests if getVehicle function is working correctly', () => {
     test('It tests if getVehicle function is returning the right vehicle', () => {
@@ -26,7 +26,7 @@ describe('It tests if getVehicle function is working correctly', () => {
             }
           ]
         const result = getVehicle(listOfVehicle, 'hmg8795')
-        expect(result).toEqual(listOfVehicle[2])
+        expect(result).toEqual([listOfVehicle[2], 2])
     })
     
     test('It tests if getVehicle function is returning false', () => {
@@ -42,6 +42,11 @@ describe('It tests if getVehicle function is working correctly', () => {
         const result = getVehicle(listOfVehicle, 'hmg8795')
         expect(result).toBe(false)
     })
+})
+
+test('It tests whether getDate is returning a date object', () => {
+	const date = getDate('1992-02-13', "15:00")
+	expect(date).toEqual('1992-02-13T15:00')
 })
 
 
