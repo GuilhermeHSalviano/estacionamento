@@ -35,11 +35,14 @@ export default {
             this.selectedPlate = value
         },
         setExitData(date, time){
-          const vehicle = getVehicle(this.listOfVehicles, this.selectedPlate)  
-          vehicle[0].exitDate = date
-          vehicle[0].exitHour = time
-          this.listOfVehicles[vehicle[1]] = vehicle[0]
-          localStorage.setItem('saveRecord', JSON.stringify(this.listOfVehicles))
+            const tableOfPrices = JSON.parse(localStorage.getItem('prices'))
+            const vehicle = getVehicle(this.listOfVehicles, this.selectedPlate)  
+            vehicle[0].exitDate = date
+            vehicle[0].exitHour = time
+            const stay = vehicle[0].getStay()
+            vehicle[0].totalCost = vehicle[0].getStayPrice(stay, tableOfPrices[1])
+            this.listOfVehicles[vehicle[1]] = vehicle[0]
+            localStorage.setItem('saveRecord', JSON.stringify(this.listOfVehicles))
         }
     }
 }
