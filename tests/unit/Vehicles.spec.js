@@ -19,7 +19,7 @@ describe('It tests whether getPriceStay is working correctly', () => {
     }
     
     test('It tests whether getPriceStay is working correctly when the stay is over one hour', () => {
-        const cost = vehicle.getPriceStay(91, tableOfPrices)
+        const cost = vehicle.getStayPrice(91, tableOfPrices)
         expect(cost).toEqual(5)
     })
 })

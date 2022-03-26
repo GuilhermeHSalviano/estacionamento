@@ -2,8 +2,9 @@
     <div class="price">
         <my-header></my-header>
         <h1>Tabela de preços</h1>
-        <daily-rate-cost :emitDailyRateCost='defineDailyRateCost'></daily-rate-cost>
-        <stay-price></stay-price>
+        <daily-rate-cost @emitDailyRateCost = 'definePrice' ></daily-rate-cost>
+        <stay-price @emitStay='definePrice'></stay-price>
+        <button @click="savePrices">Salvar</button>
     </div>
 </template>
 <script>
@@ -18,12 +19,17 @@ export default {
     },
     data(){
         return{
-            dailyRateCost: ''
+            dailyRateCost: '',
+            stayCost: '',
+            showInput: ''
         }
     },
     methods:{
-        defineDailyRateCost(price){
-            this.dailyRateCost = price
+        definePrice(price, time){
+            this[time] = price
+        },
+        savePrices(){
+            localStorage.setItem('prices', JSON.stringify([this.dailyRateCost, this.stayCost]))
         }
     }
 }

@@ -18,7 +18,8 @@ export class Vehicle{
         return minutes
     }
 
-    getPriceStay(stay, tableOfPrices){
+    /*It returns the price that the costumer should pay after a given stay.*/
+    getStayPrice(stay, tableOfPrices){
         if(stay < 15){
             return tableOfPrices.untilFifteenMinutes 
         } else if(stay < 15 && stay < 30){

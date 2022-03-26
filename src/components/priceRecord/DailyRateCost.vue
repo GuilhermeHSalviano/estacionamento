@@ -22,7 +22,7 @@ export default {
     },
     methods:{
         setDailyRateCost(){
-            this.$emit('emitDailyRateCost', this.dailyRateCost)
+            this.$emit('emitDailyRateCost', this.dailyRateCost, 'dailyRateCost')
             this.showInput = false
         },
         editDailyRateCost(){

@@ -13,10 +13,10 @@
             <button @click="setStay">Definir</button>
         </div>
         <div class="stay__input-edit" v-else>
-            <p>Até 15 minutos: {{ untilFifteenMinutes }}</p>
-            <p>Até 30 minutos: {{ untilThirtyMinutes }}</p>
-            <p>Até uma hora: {{ untilOneHour }}</p>
-            <p>Meia hora adicional: {{ additionalThirtyMinutes }}</p>
+            <p>Até 15 minutos: {{ tableOfPrices.untilFifteenMinutes }}</p>
+            <p>Até 30 minutos: {{ tableOfPrices.untilThirtyMinutes }}</p>
+            <p>Até uma hora: {{ tableOfPrices.untilOneHour }}</p>
+            <p>Meia hora adicional: {{ tableOfPrices.additionalThirtyMinutes }}</p>
             <button @click="editStay">Editar</button>
         </div>
     </div>
@@ -37,11 +37,7 @@ export default {
     },
     methods:{
         setStay(){
-            this.$emit('emitStay', this.tableOfPrices)
-            this.tableOfPrices.untilFifteenMinutes = 
-            this.tableOfPrices.untilThirtyMinutes = 
-            this.tableOfPrices.untilOneHour = 
-            this.tableOfPrices.additionalThirtyMinutes = ''
+            this.$emit('emitStay', this.tableOfPrices, 'stayCost')
             this.showInput = false
         },
         editStay(){
