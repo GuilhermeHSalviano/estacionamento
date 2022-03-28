@@ -24,3 +24,30 @@ export function getDate (date, time){
     return dateObject
 }
 
+ /*This function gets the stay in minutes of a given Vehicle object.*/
+export function getStay (entryDate, entryHour, exitDate, exitHour){
+    const entry = getDate(entryDate, entryHour)
+    const exit = getDate(exitDate, exitHour)
+    const diff = Math.abs(entry.getTime() - exit.getTime())
+    
+    const minutes = Math.ceil(diff / (1000 * 60))
+    return minutes
+}
+
+/*It sets the price that the costumer should pay after a given stay.*/
+export function getStayPrice(stay, tableOfPrices){
+    if(stay <= 15){
+        return tableOfPrices.untilFifteenMinutes 
+    } else if(stay > 15 && stay <= 30){
+        return tableOfPrices.untilThirtyMinutes
+    } else if(stay > 30 && stay <= 60){
+        return tableOfPrices.untilOneHour
+    } else if(stay > 60){
+        let overThirtyMinutes = stay - 60
+        let integers = parseInt(overThirtyMinutes / 30)
+        let total = (integers * tableOfPrices.additionalThirtyMinutes) + ((overThirtyMinutes % 30) > 0 ? tableOfPrices.additionalThirtyMinutes : 0)
+        return parseFloat(total) + parseFloat(tableOfPrices.untilOneHour)
+    }
+    
+}
+

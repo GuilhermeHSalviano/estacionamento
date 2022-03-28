@@ -11,7 +11,7 @@
 import MyHeader from "../shared/MyHeader.vue"
 import ListOfRecords from './ListOfRecords.vue'
 import SetExit from "./SetExit.vue"
-import { getVehicle } from "../../../functions.js"
+import { getVehicle, getStay, getStayPrice } from "../../../functions.js"
 
 export default {
     components:{
@@ -34,13 +34,14 @@ export default {
         setSelectedPlate(value){
             this.selectedPlate = value
         },
+        /*It sets the exit of the vehicle and defines the cost of the stay.*/
         setExitData(date, time){
             const tableOfPrices = JSON.parse(localStorage.getItem('prices'))
             const vehicle = getVehicle(this.listOfVehicles, this.selectedPlate)  
             vehicle[0].exitDate = date
             vehicle[0].exitHour = time
-            const stay = vehicle[0].getStay()
-            vehicle[0].totalCost = vehicle[0].getStayPrice(stay, tableOfPrices[1])
+            const stay = getStay(vehicle[0].entryDate, vehicle[0].entryHour, date, time)
+            vehicle[0].totalCost = getStayPrice(stay, tableOfPrices[1])
             this.listOfVehicles[vehicle[1]] = vehicle[0]
             localStorage.setItem('saveRecord', JSON.stringify(this.listOfVehicles))
         }
