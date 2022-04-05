@@ -26,7 +26,7 @@ export default {
         }
     },
     props:{
-        clear: Boolean
+        clear: Boolean,
     }
 }
 </script>

@@ -1,4 +1,4 @@
-import { getDate, getVehicle, getStay, getStayPrice } from "../../../functions.js"
+import { getDate, getVehicle, getStay, getStayPrice, getDailyRatePrice, getDailyRate } from "../../../functions.js"
 
 describe('It tests if getVehicle function is working correctly', () => {
     test('It tests if getVehicle function is returning the right vehicle', () => {
@@ -62,6 +62,16 @@ test('It tests if getStayPrice is returning the right value', () => {
 
     const price = getStayPrice(stay, tableOfPrices)
     expect(price).toEqual(12)
+})
+
+test('It tests whether getDailyRatePrice is working correctly', () => {
+  const price = getDailyRatePrice(4320, 30)
+  expect(price).toEqual(90)
+})
+
+test('It tests if getDailyRate function is returning the right number', () => {
+  const days = getDailyRate("2022-04-01", '2022-04-05')
+  expect(days).toEqual(4)
 })
 
 

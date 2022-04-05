@@ -2,9 +2,13 @@
     <div class="price">
         <my-header></my-header>
         <h1>Tabela de preços</h1>
-        <daily-rate-cost @emitDailyRateCost = 'definePrice' ></daily-rate-cost>
-        <stay-price @emitStay='definePrice'></stay-price>
-        <button @click="savePrices">Salvar</button>
+        <h2>Carros:</h2>
+        <daily-rate-cost @emitDailyRateCost = 'defineCarPrice' ></daily-rate-cost>
+        <stay-price @emitStay = 'defineCarPrice' ></stay-price>
+        <h2>Motos:</h2>
+        <daily-rate-cost @emitDailyRateCost = 'defineMotoPrice' ></daily-rate-cost>
+        <stay-price @emitStay = 'defineMotoPrice' ></stay-price>
+        <button @click = "savePrices" >Salvar</button>
     </div>
 </template>
 <script>
@@ -19,17 +23,27 @@ export default {
     },
     data(){
         return{
-            dailyRateCost: '',
-            stayCost: '',
+            moto: {
+                dailyRateCost:'',
+                stayCost: ''
+            },
+            car:{
+                dailyRateCost: '',
+                stayCost: ''
+
+            },
             showInput: ''
         }
     },
     methods:{
-        definePrice(price, time){
-            this[time] = price
+        defineCarPrice(price, time){
+            this.car[time] = price
+        },
+        defineMotoPrice(price, time){
+            this.moto[time] = price
         },
         savePrices(){
-            localStorage.setItem('prices', JSON.stringify([this.dailyRateCost, this.stayCost]))
+            localStorage.setItem('prices', JSON.stringify([this.moto, this.car]))
         }
     }
 }

@@ -11,7 +11,7 @@
 import MyHeader from "../shared/MyHeader.vue"
 import ListOfRecords from './ListOfRecords.vue'
 import SetExit from "./SetExit.vue"
-import { getVehicle, getStay, getStayPrice } from "../../../functions.js"
+import { getVehicle, getStay, getStayPrice, getDailyRatePrice, getDailyRate } from "../../../functions.js"
 
 export default {
     components:{
@@ -41,7 +41,25 @@ export default {
             vehicle[0].exitDate = date
             vehicle[0].exitHour = time
             const stay = getStay(vehicle[0].entryDate, vehicle[0].entryHour, date, time)
-            vehicle[0].totalCost = getStayPrice(stay, tableOfPrices[1])
+            
+            if(vehicle[0].car == true){
+                /*When the vehicle is a car.*/
+                if(vehicle[0].dailyRate == true){
+                    const days = parseFloat(tableOfPrices[1].dailyRateCost)
+                    vehicle[0].totalCost = days * (getDailyRate(vehicle[0].entryDate, vehicle[0].exitDate))
+                } else{
+                    vehicle[0].totalCost = getStayPrice(stay, tableOfPrices[1].stayCost)
+                }
+            } else{
+                /*When the vehicle is a motocycle.*/
+                if(vehicle[0].dailyRate == true){
+                    const days = parseFloat(tableOfPrices[0].dailyRateCost)
+                    vehicle[0].totalCost = days * (getDailyRate(vehicle[0].entryDate, vehicle[0].exitDate))
+                } else{
+                    vehicle[0].totalCost = getStayPrice(stay, tableOfPrices[0].stayCost)
+                }
+            }
+            debugger
             this.listOfVehicles[vehicle[1]] = vehicle[0]
             localStorage.setItem('saveRecord', JSON.stringify(this.listOfVehicles))
         }

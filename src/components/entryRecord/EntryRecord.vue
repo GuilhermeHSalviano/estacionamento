@@ -4,7 +4,7 @@
         <vehicle-record @emitTypeOfVehicle='setVehicle'></vehicle-record>
         <license-plate @emitLicensePlateNumber='setVehicle' :clear='clear'></license-plate>
         <set-time @emitTime="setTime" :clear=clear></set-time>
-        <daily-rate @emitDailyRate='setVehicle'></daily-rate>
+        <daily-rate @emitDailyRateInput='setVehicle'></daily-rate>
         <button class="save" @click="saveRecord">Concluir cadastro</button>
     </div>
 </template>

@@ -35,7 +35,7 @@ export function getStay (entryDate, entryHour, exitDate, exitHour){
 }
 
 /*It sets the price that the costumer should pay after a given stay.*/
-export function getStayPrice(stay, tableOfPrices){
+export function getStayPrice(stay, tableOfPrices ){
     if(stay <= 15){
         return tableOfPrices.untilFifteenMinutes 
     } else if(stay > 15 && stay <= 30){
@@ -49,5 +49,15 @@ export function getStayPrice(stay, tableOfPrices){
         return parseFloat(total) + parseFloat(tableOfPrices.untilOneHour)
     }
     
+}
+
+/*It gets the amount of days between two dates.*/
+export function getDailyRate(entryDate, exitDate){
+    const entry = getDate(entryDate, '00:00')
+    const exit = getDate(exitDate, '00:00')
+    const diff = Math.abs(entry.getTime() - exit.getTime())
+    
+    const days = diff / (1000 * 60 * 60 * 24)
+    return days
 }
 
