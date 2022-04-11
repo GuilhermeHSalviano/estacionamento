@@ -27,7 +27,11 @@ export default {
     },
     created(){
         if(localStorage.getItem('saveRecord')){
-           this.listOfVehicles = JSON.parse(localStorage.getItem('saveRecord'))
+           const list = JSON.parse(localStorage.getItem('saveRecord'))
+           const filteredList = list.filter((element) => {
+               return !element.exitDate
+           })
+           this.listOfVehicles = filteredList
        }
     },
     methods:{
@@ -36,8 +40,9 @@ export default {
         },
         /*It sets the exit of the vehicle and defines the cost of the stay.*/
         setExitData(date, time){
+            const totalVehicles = JSON.parse(localStorage.getItem('saveRecord'))
             const tableOfPrices = JSON.parse(localStorage.getItem('prices'))
-            const vehicle = getVehicle(this.listOfVehicles, this.selectedPlate)  
+            const vehicle = getVehicle(totalVehicles, this.selectedPlate)  
             vehicle[0].exitDate = date
             vehicle[0].exitHour = time
             const stay = getStay(vehicle[0].entryDate, vehicle[0].entryHour, date, time)
@@ -59,9 +64,8 @@ export default {
                     vehicle[0].totalCost = getStayPrice(stay, tableOfPrices[0].stayCost)
                 }
             }
-            debugger
-            this.listOfVehicles[vehicle[1]] = vehicle[0]
-            localStorage.setItem('saveRecord', JSON.stringify(this.listOfVehicles))
+            totalVehicles[vehicle[1]] = vehicle[0]
+            localStorage.setItem('saveRecord', JSON.stringify(totalVehicles))
         }
     }
 }

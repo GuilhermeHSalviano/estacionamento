@@ -12,8 +12,8 @@ export default {
        }
    },
    methods:{
-        changeTypeOfVehicle(value){
-           this.$emit('emitTypeOfVehicle', value, 'car')
+        changeTypeOfVehicle(){
+           this.$emit('emitTypeOfVehicle', !this.input, 'car')
         }
    }
 }

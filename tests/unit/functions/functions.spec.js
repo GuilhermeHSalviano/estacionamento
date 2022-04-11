@@ -1,4 +1,5 @@
-import { getDate, getVehicle, getStay, getStayPrice, getDailyRatePrice, getDailyRate } from "../../../functions.js"
+import { getDate, getVehicle, getStayPrice, getDailyRatePrice, getDailyRate, 
+isDateBetween} from "../../../functions.js"
 
 describe('It tests if getVehicle function is working correctly', () => {
     test('It tests if getVehicle function is returning the right vehicle', () => {
@@ -72,6 +73,11 @@ test('It tests whether getDailyRatePrice is working correctly', () => {
 test('It tests if getDailyRate function is returning the right number', () => {
   const days = getDailyRate("2022-04-01", '2022-04-05')
   expect(days).toEqual(4)
+})
+
+test('It checks whether isDateBetween() is returning the right boolean', () => {
+  const date = isDateBetween('1992-01-01', '2022-04-08', '2023-01-01')
+  expect(date).toEqual(false)
 })
 
 

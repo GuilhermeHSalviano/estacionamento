@@ -61,3 +61,11 @@ export function getDailyRate(entryDate, exitDate){
     return days
 }
 
+export function isDateBetween(to, from, date){
+    const beginning = Date.parse(to)
+    const end = Date.parse(from)
+    const givenDate = Date.parse(date)
+    if(beginning <= givenDate && end >= givenDate){
+        return true
+    } else {return false}
+}
