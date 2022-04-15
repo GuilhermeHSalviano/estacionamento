@@ -47,11 +47,6 @@ describe('It tests if getVehicle function is working correctly', () => {
     
 })
 
-test('It tests whether getDate is returning a date object', () => {
-	const date = getDate('1992-02-13', "15:00")
-	expect(date).toEqual('1992-02-13T15:00')
-})
-
 test('It tests if getStayPrice is returning the right value', () => {
       const stay = 70
       const tableOfPrices = {
@@ -62,12 +57,7 @@ test('It tests if getStayPrice is returning the right value', () => {
     }
 
     const price = getStayPrice(stay, tableOfPrices)
-    expect(price).toEqual(12)
-})
-
-test('It tests whether getDailyRatePrice is working correctly', () => {
-  const price = getDailyRatePrice(4320, 30)
-  expect(price).toEqual(90)
+    expect(price).toEqual(9)
 })
 
 test('It tests if getDailyRate function is returning the right number', () => {

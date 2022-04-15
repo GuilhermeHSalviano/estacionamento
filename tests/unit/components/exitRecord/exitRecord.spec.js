@@ -1,6 +1,8 @@
 import { mount } from '@vue/test-utils'
 import ExitRecord from '../../../../src/components/exitRecord/ExitRecord.vue'
 
+/*This is the only test file that is not working.*/
+
 test('It tests if listOfRecord has been set correctly after setExitData has been called', () => {
     const wrapper = mount(ExitRecord, {
         data(){

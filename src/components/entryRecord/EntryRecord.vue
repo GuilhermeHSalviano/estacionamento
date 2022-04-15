@@ -1,11 +1,13 @@
 <template>
     <div class="content">
         <my-header></my-header>
-        <vehicle-record @emitTypeOfVehicle='setVehicle'></vehicle-record>
-        <license-plate @emitLicensePlateNumber='setVehicle' :clear='clear'></license-plate>
-        <set-time @emitTime="setTime" :clear=clear></set-time>
-        <daily-rate @emitDailyRateInput='setVehicle'></daily-rate>
-        <button class="save" @click="saveRecord">Concluir cadastro</button>
+        <div class="content__record">
+            <vehicle-record @emitTypeOfVehicle='setVehicle'></vehicle-record>
+            <license-plate @emitLicensePlateNumber='setVehicle' :clear='clear'></license-plate>
+            <set-time @emitTime="setTime" :clear=clear></set-time>
+            <daily-rate @emitDailyRateInput='setVehicle'></daily-rate>
+            <button type="button" class="save btn btn-primary" @click="saveRecord">Concluir cadastro</button>
+        </div>
     </div>
 </template>
 <script>
@@ -60,5 +62,8 @@ export default {
 <style scoped>
     .content{
         width: 100%;
+    }
+    .content__record{
+        margin-left: 5px;
     }
 </style>

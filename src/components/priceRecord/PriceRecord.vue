@@ -1,8 +1,8 @@
 <template>
     <div class="price">
         <my-header></my-header>
-        <h1>Tabela de preços</h1>
-        <div class="price__panel" v-if="!showEdit">
+        <h2 class="price__title">Tabela de preços</h2>
+        <div class="d-flex flex-column price__div" v-if="!showEdit">
             <h2>Carros:</h2>
                 <p>Diária: R$ {{prices[1].dailyRateCost}}</p>
                 <p>Até quinze minutos: R$ {{ prices[1].stayCost.untilFifteenMinutes }}</p>
@@ -23,9 +23,9 @@
             <h2>Motos:</h2>
             <daily-rate-cost @emitDailyRateCost = 'defineMotoPrice' ></daily-rate-cost>
             <stay-price @emitStay = 'defineMotoPrice' ></stay-price>
-            <button @click = "savePrices">Salvar</button>
+            <button @click = "savePrices" type="button" class="save btn btn-primary">Salvar</button>
         </div>
-        <button @click = "showEditPanel" v-if = "!showEdit" >Editar preços</button>
+        <button @click = "showEditPanel" v-if = "!showEdit" type="button" class="save btn btn-primary" id="button" >Editar preços</button>
     </div>
 </template>
 <script>
@@ -80,5 +80,14 @@ export default {
 <style scoped>
     .price{
         width: 100%;
+    }
+    .price__title{
+        margin-left: 5px;
+    }
+    .price__div{
+        margin-left: 10px;
+    }
+    #button{
+        margin-left: 5px;
     }
 </style>

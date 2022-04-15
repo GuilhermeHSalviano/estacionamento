@@ -5,7 +5,7 @@
             <input type="date" id="date" v-model="date">
             <label for="time">Selecionar horário:</label>
             <input type="time" id="time" v-model="time">
-            <button @click="recordExit">Registrar</button>
+            <button type="button" class="save btn btn-primary" @click="recordExit">Registrar</button>
         </div>
     </div>
 </template>

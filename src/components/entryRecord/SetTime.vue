@@ -1,10 +1,10 @@
 <template>
     <div>
-        <h2>Cadastrar horário de entrada:</h2>
+        <p>Horário de entrada:</p>
         <label for="">Data</label>
-        <input type="date" v-model="date">
+        <input type="date" v-model="date" class="input">
         <label for="">Horário</label>
-        <input type="time" v-model="time">
+        <input class="input" type="time" v-model="time">
     </div>
 </template>
 <script>
@@ -31,5 +31,7 @@ export default {
 }
 </script>
 <style scoped>
-
+    .input{
+        width: 10%;
+    }
 </style>

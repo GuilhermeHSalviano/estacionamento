@@ -5,7 +5,7 @@
         <input type="date" id="beginning" v-model = "beginning">
         <label for="">Data final:</label>
         <input type="date" id="end" v-model = "end">
-        <button @click="showReport">Buscar</button>
+        <button @click="showReport" type="button" class="save btn btn-primary">Buscar</button>
     </div>
 </template>
 <script>
@@ -31,5 +31,7 @@ export default {
 }
 </script>
 <style scoped>
-
+    .filter{
+        margin-left: 5px;
+    }
 </style>

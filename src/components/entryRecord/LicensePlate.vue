@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <label for="">Placa:</label>
         <input type="text" v-model="licensePlate" class="number">
     </div>
