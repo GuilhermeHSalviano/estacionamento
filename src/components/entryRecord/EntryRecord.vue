@@ -7,6 +7,8 @@
             <set-time @emitTime="setTime" :clear=clear></set-time>
             <daily-rate @emitDailyRateInput='setVehicle'></daily-rate>
             <button type="button" class="save btn btn-primary" @click="saveRecord">Concluir cadastro</button>
+            <span class="text-danger" v-if="alert">Preencha todos os campos!</span>
+            <span class='text-success' v-if="successMessage">Entrada registrada com sucesso!</span>
         </div>
     </div>
 </template>
@@ -34,7 +36,9 @@ export default {
            date: '',
            time: '',
            dailyRate: false,
-           clear: false
+           clear: false,
+           alert: false,
+           successMessage: false
        }
    },
    methods:{
@@ -46,10 +50,16 @@ export default {
            this.time = time
        },
        saveRecord(){
+           if(this.licensePlate == '' || this.date == '' || this.time == ''){
+               this.alert = true
+               return
+           }
            const record = new Vehicle(this.car, this.licensePlate, this.date, this.time, this.dailyRate)
            this.listOfVehicles.push(record)
            localStorage.setItem('saveRecord', JSON.stringify(this.listOfVehicles))
            this.clear = (!this.clear)
+           this.alert = false
+           this.successMessage = true
        }
    },
    created(){
